@@ -1,5 +1,6 @@
 package com.allstate.services;
 
+import com.allstate.entities.Actor;
 import com.allstate.entities.Movie;
 import com.allstate.entities.Studio;
 import com.allstate.repositories.IStudioRepository;
@@ -27,6 +28,11 @@ public class StudioService {
     public Page<Movie> findMovies(int id, int page) {
         PageRequest pr = new PageRequest(page, 3);
         return repository.findAllMoviesByStudioId(id, pr);
+    }
+
+    public Page<Actor> findActorsByStudioId(int id, int page) {
+        PageRequest pr = new PageRequest(page, 3);
+        return repository.findAllActorsByStudioId(id, pr);
     }
 
     public Studio findOne(int id) {

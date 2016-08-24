@@ -4,6 +4,7 @@ import com.allstate.enums.Gender;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "actors")

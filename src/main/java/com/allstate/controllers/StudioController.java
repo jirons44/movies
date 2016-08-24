@@ -1,5 +1,6 @@
 package com.allstate.controllers;
 
+import com.allstate.entities.Actor;
 import com.allstate.entities.Movie;
 import com.allstate.entities.Studio;
 import com.allstate.services.StudioService;
@@ -23,6 +24,12 @@ public class StudioController {
             method = RequestMethod.GET)
     public Page<Movie> movies(@PathVariable int id, @RequestParam(name = "page", required = false, defaultValue = "0") int page) {
         return studioService.findMovies(id, page);
+    }
+
+    @RequestMapping(path = {"/{id}/actors"},
+            method = RequestMethod.GET)
+    public Page<Actor> actors(@PathVariable int id, @RequestParam(name = "page", required = false, defaultValue = "0") int page) {
+        return studioService.findActorsByStudioId(id, page);
     }
 
     @RequestMapping(path = {"", "/"},
