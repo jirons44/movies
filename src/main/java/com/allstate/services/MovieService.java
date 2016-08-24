@@ -1,11 +1,14 @@
 package com.allstate.services;
 
 import com.allstate.entities.Movie;
+import com.allstate.enums.Rating;
 import com.allstate.repositories.IMovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MovieService {
@@ -20,6 +23,14 @@ public class MovieService {
         public Page<Movie> findAll(int pageNumber) {
             PageRequest pr = new PageRequest(pageNumber, 3);
             return this.repository.findAll(pr);
+        }
+
+        public Movie findByName(String name) {
+            return repository.findByName(name);
+        }
+
+        public List<Movie> findByRating(Rating rating) {
+            return repository.findByRatingOrderByReleasedDesc(rating);
         }
 
         public Movie findOne(int id) {
